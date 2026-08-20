@@ -1,10 +1,10 @@
 /* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Inter:wght@300;400;500;600;700&display=swap");
 
 :root {
-  --font-handwritten: 'Architects Daughter', cursive, sans-serif;
-  --font-body: 'Inter', sans-serif;
-  
+  --font-handwritten: "Architects Daughter", cursive, sans-serif;
+  --font-body: "Inter", sans-serif;
+
   /* Color Palette - Light Mode (WCAG compliant contrast ratios) */
   --color-bg-body: #f5f5f7;
   --color-bg-page: #ffffff;
@@ -19,7 +19,7 @@
   --color-input-focus-outline: rgba(0, 86, 179, 0.2);
   --color-btn-text: #ffffff;
   --color-btn-hover-text: #ffffff;
-  
+
   --transition-speed: 0.2s;
 }
 
@@ -40,7 +40,6 @@
   --color-btn-hover-text: #16171d;
 }
 
-
 /* Base Styles */
 * {
   box-sizing: border-box;
@@ -58,7 +57,9 @@ body {
   align-items: flex-start;
   min-height: 100vh;
   padding: 20px;
-  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+  transition:
+    background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease;
 }
 
 /* Page Wrapper */
@@ -73,7 +74,10 @@ body {
   flex-direction: column;
   min-height: calc(100vh - 40px);
   position: relative;
-  transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  transition:
+    background-color var(--transition-speed) ease,
+    border-color var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease;
 }
 
 /* Header */
@@ -100,7 +104,12 @@ header {
   align-items: center;
   justify-content: center;
   color: var(--color-text-main);
-  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+  transition:
+    transform var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease,
+    background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease,
+    border-color var(--transition-speed) ease;
   box-shadow: 3px 3px 0px var(--color-border);
   outline: none;
 }
@@ -155,7 +164,9 @@ header {
   background-color: var(--color-text-main);
   border-radius: 4px;
   margin-right: 10px;
-  transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease;
+  transition:
+    transform var(--transition-speed) ease,
+    background-color var(--transition-speed) ease;
 }
 
 .logo-container:hover .logo-icon {
@@ -261,7 +272,11 @@ header {
   border-top: 2px solid var(--color-border);
   font-family: var(--font-handwritten);
   font-size: 1.1rem;
-  transition: background-color var(--transition-speed) ease, padding-left var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+  transition:
+    background-color var(--transition-speed) ease,
+    padding-left var(--transition-speed) ease,
+    color var(--transition-speed) ease,
+    border-color var(--transition-speed) ease;
 }
 
 .project-item-link:hover {
@@ -307,7 +322,9 @@ header {
   color: var(--color-accent);
   text-decoration: none;
   font-weight: 500;
-  transition: color var(--transition-speed) ease, text-decoration var(--transition-speed) ease;
+  transition:
+    color var(--transition-speed) ease,
+    text-decoration var(--transition-speed) ease;
 }
 
 .exp-link:hover {
@@ -366,7 +383,11 @@ header {
   border-radius: 20px;
   padding: 24px;
   background-color: var(--color-bg-card);
-  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+  transition:
+    transform var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease,
+    background-color var(--transition-speed) ease,
+    border-color var(--transition-speed) ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -432,7 +453,11 @@ footer {
   border: 2px solid var(--color-border);
   background-color: var(--color-bg-card);
   border-radius: 8px;
-  transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+  transition:
+    border-color var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease,
+    background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease;
 }
 
 .form-input:focus {
@@ -458,7 +483,12 @@ footer {
   border: 2px solid var(--color-border);
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  transition:
+    background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease,
+    border-color var(--transition-speed) ease,
+    transform var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease;
 }
 
 .form-submit-btn:hover {
@@ -478,22 +508,27 @@ footer {
   margin-bottom: 25px;
 }
 
-.project-detail-card, .article-card {
+.project-detail-card,
+.article-card {
   border: 2px solid var(--color-border);
   border-radius: 12px;
   padding: 25px;
   margin-bottom: 25px;
   background-color: var(--color-bg-card);
-  transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+  transition:
+    background-color var(--transition-speed) ease,
+    border-color var(--transition-speed) ease;
 }
 
-.project-detail-card h3, .article-card h3 {
+.project-detail-card h3,
+.article-card h3 {
   font-family: var(--font-handwritten);
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
-.project-tech, .article-meta {
+.project-tech,
+.article-meta {
   font-size: 0.85rem;
   color: var(--color-text-muted);
   margin-bottom: 15px;
@@ -504,20 +539,21 @@ footer {
   .main-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .grid-col:not(:last-child) {
     border-right: none;
     border-bottom: 2px solid var(--color-border);
   }
-  
-  .projects-col h2, .experience-col h2 {
+
+  .projects-col h2,
+  .experience-col h2 {
     padding: 25px;
   }
-  
+
   .reviews-container {
     grid-template-columns: 1fr;
   }
-  
+
   header {
     flex-direction: column;
     gap: 15px;

@@ -5,7 +5,8 @@
   --font-handwritten: 'Architects Daughter', cursive, sans-serif;
   --font-body: 'Inter', sans-serif;
   
-  /* Color Palette */
+  /* Color Palette - Light Mode (WCAG compliant contrast ratios) */
+  --color-bg-body: #f5f5f7;
   --color-bg-page: #ffffff;
   --color-bg-card: #fdfdfd;
   --color-text-main: #111111;
@@ -13,10 +14,32 @@
   --color-border: #111111;
   --color-accent: #0056b3;
   --color-accent-hover: #003d80;
-  --color-card-shadow: rgba(0, 0, 0, 0.08);
+  --color-card-shadow: rgba(0, 0, 0, 0.05);
+  --color-item-hover-bg: #f7f7f9;
+  --color-input-focus-outline: rgba(0, 86, 179, 0.2);
+  --color-btn-text: #ffffff;
+  --color-btn-hover-text: #ffffff;
   
   --transition-speed: 0.2s;
 }
+
+[data-theme="dark"] {
+  /* Color Palette - Dark Mode (WCAG compliant contrast ratios) */
+  --color-bg-body: #0d0e12;
+  --color-bg-page: #16171d;
+  --color-bg-card: #1f2029;
+  --color-text-main: #f5f5f7;
+  --color-text-muted: #a0a0ab;
+  --color-border: #f5f5f7;
+  --color-accent: #58a6ff;
+  --color-accent-hover: #8ab4f8;
+  --color-card-shadow: rgba(0, 0, 0, 0.4);
+  --color-item-hover-bg: #252731;
+  --color-input-focus-outline: rgba(88, 166, 255, 0.4);
+  --color-btn-text: #16171d;
+  --color-btn-hover-text: #16171d;
+}
+
 
 /* Base Styles */
 * {
@@ -27,7 +50,7 @@
 
 body {
   font-family: var(--font-body);
-  background-color: #f5f5f7;
+  background-color: var(--color-bg-body);
   color: var(--color-text-main);
   line-height: 1.6;
   display: flex;
@@ -35,6 +58,7 @@ body {
   align-items: flex-start;
   min-height: 100vh;
   padding: 20px;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
 /* Page Wrapper */
@@ -44,11 +68,12 @@ body {
   background-color: var(--color-bg-page);
   border: 2px solid var(--color-border);
   padding: 40px;
-  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 8px 8px 0px var(--color-card-shadow);
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 40px);
   position: relative;
+  transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
 
 /* Header */
@@ -57,6 +82,61 @@ header {
   justify-content: space-between;
   align-items: center;
   padding-bottom: 25px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.theme-toggle-btn {
+  background-color: var(--color-bg-card);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-main);
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+  box-shadow: 3px 3px 0px var(--color-border);
+  outline: none;
+}
+
+.theme-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 5px 5px 0px var(--color-border);
+}
+
+.theme-toggle-btn:active {
+  transform: translateY(1px);
+  box-shadow: 1px 1px 0px var(--color-border);
+}
+
+.theme-toggle-icon {
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle-btn:hover .theme-toggle-icon {
+  transform: rotate(15deg);
+}
+
+/* Hide sun icon by default, show moon icon */
+:root:not([data-theme="dark"]) .sun-icon {
+  display: none;
+}
+:root:not([data-theme="dark"]) .moon-icon {
+  display: block;
+}
+
+/* Show sun icon, hide moon icon in dark mode */
+[data-theme="dark"] .sun-icon {
+  display: block;
+}
+[data-theme="dark"] .moon-icon {
+  display: none;
 }
 
 .logo-container {
@@ -75,7 +155,7 @@ header {
   background-color: var(--color-text-main);
   border-radius: 4px;
   margin-right: 10px;
-  transition: transform var(--transition-speed) ease;
+  transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease;
 }
 
 .logo-container:hover .logo-icon {
@@ -181,11 +261,11 @@ header {
   border-top: 2px solid var(--color-border);
   font-family: var(--font-handwritten);
   font-size: 1.1rem;
-  transition: background-color var(--transition-speed) ease, padding-left var(--transition-speed) ease;
+  transition: background-color var(--transition-speed) ease, padding-left var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
 }
 
 .project-item-link:hover {
-  background-color: #f7f7f9;
+  background-color: var(--color-item-hover-bg);
   padding-left: 30px;
   color: var(--color-accent);
 }
@@ -286,7 +366,7 @@ header {
   border-radius: 20px;
   padding: 24px;
   background-color: var(--color-bg-card);
-  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -352,12 +432,13 @@ footer {
   border: 2px solid var(--color-border);
   background-color: var(--color-bg-card);
   border-radius: 8px;
-  transition: border-color var(--transition-speed) ease, outline var(--transition-speed) ease;
+  transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
 .form-input:focus {
   outline: none;
   border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-input-focus-outline);
 }
 
 .form-textarea {
@@ -373,16 +454,16 @@ footer {
   font-size: 1.2rem;
   font-weight: bold;
   background-color: var(--color-text-main);
-  color: #ffffff;
+  color: var(--color-btn-text);
   border: 2px solid var(--color-border);
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, transform var(--transition-speed) ease;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
 
 .form-submit-btn:hover {
   background-color: var(--color-accent);
-  color: #ffffff;
+  color: var(--color-btn-hover-text);
   transform: translateY(-2px);
 }
 
@@ -403,6 +484,7 @@ footer {
   padding: 25px;
   margin-bottom: 25px;
   background-color: var(--color-bg-card);
+  transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
 }
 
 .project-detail-card h3, .article-card h3 {
@@ -441,4 +523,12 @@ footer {
     gap: 15px;
     text-align: center;
   }
+}
+
+/* Accessibility Focus Indicator (WCAG 2.1 Compliance) */
+a:focus-visible,
+.theme-toggle-btn:focus-visible,
+.form-submit-btn:focus-visible {
+  outline: 2px dashed var(--color-accent);
+  outline-offset: 4px;
 }
